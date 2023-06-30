@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <title>Etch-a-Sketch</title>
+    <style>
+
+        .whiteCell{
+             display: inline-block;
+             border: 1px solid black; 
+             margin-right: 1px; 
+             margin-bottom: 1px; 
+        }
+        .whiteCell:hover{
+            background-color: black;
+            transition: 0.5s; 
+        }
+        .blackCell{
+             background-color: black;
+             display: inline-block;
+             border: 1px solid black; 
+             margin-right: 1px; 
+             margin-bottom: 1px; 
+        }
+        .container{
+            width: 800px;
+            height: 800px; 
+            display: grid;
+        }
+
+        .containerForContainer{   /* просто чтобы выровнять */
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <button class="changeGridButton">Make the grid</button>
+    <div class="containerForContainer">
+        <div class="container">
+        </div>
+    </div>
+</body>
+</html>
