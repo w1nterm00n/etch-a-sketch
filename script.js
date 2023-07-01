@@ -22,8 +22,6 @@ for ( let i = 0; i < n; i++ ){
         }
 }
 
-
-var m;
 changeGridButton.addEventListener('click', () => {
   // очищение
   if (n > 0) {
@@ -35,33 +33,19 @@ changeGridButton.addEventListener('click', () => {
         };
         n--;
     }
-    console.log('n is ', n);
-  }
-
-  if (m > 0) {
-    console.log("hello");
-    var M = m;
-    for ( let i = 0; i < M; i++ ){
-        for ( let j = 0; j < M; j++ ){
-            var gridCell = gridArray[i][j];
-            parentElement.removeChild(gridCell);
-        };
-        m--;
-    }
-    console.log('m is ', m);
   }
   //произошло очищение грида
 
   //создание нового грида
-  m = +prompt ('enter the number of squares (100 is maximum)');
+  n = +prompt ('enter the number of squares (100 is maximum)');
 
-    if (m<101) {
-      parentElement.style.gridTemplateRows = `repeat(${m}, 1fr)`;  
-      parentElement.style.gridTemplateColumns = `repeat(${m}, 1fr)`;
+    if (n<101) {
+      parentElement.style.gridTemplateRows = `repeat(${n}, 1fr)`;  
+      parentElement.style.gridTemplateColumns = `repeat(${n}, 1fr)`;
   
-      for ( let i = 0; i < m; i++ ){
+      for ( let i = 0; i < n; i++ ){
           gridArray[i] = [];
-              for ( let j = 0; j < m; j++ ){
+              for ( let j = 0; j < n; j++ ){
                   var gridCell = document.createElement('div');  
                   parentElement.appendChild(gridCell);
                   gridCell.classList.add('whiteCell');
