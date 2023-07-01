@@ -1,6 +1,7 @@
 let parentElement = document.querySelector ('.container');
 const changeGridButton = document.querySelector('.changeGridButton');
 const randomColor = document.querySelector('.randomColor');
+const darkening = document.querySelector('.darkening');
 
 let n = 16;
 
@@ -65,6 +66,7 @@ changeGridButton.addEventListener('click', () => {
 });
 
 
+
 randomColor.addEventListener('click', () => {
 
         var N = n;
@@ -104,4 +106,50 @@ function generateRandomColor() {
 
     var color = "rgb(" + red + ", " + green + ", " + blue + ")";
     return color;
+}
+
+
+
+
+darkening.addEventListener('click', () => {
+  var N = n;
+  for ( let i = 0; i < N; i++ ){
+      for ( let j = 0; j < N; j++ ){
+          var gridCell = gridArray[i][j];
+          parentElement.removeChild(gridCell);
+      };
+      n--;
   }
+  n = N; 
+  //произошло очищение грида
+  
+      //создаётся новый такой же грид, но цвета затемняются
+      for ( let i = 0; i < n; i++ ){
+        gridArray[i] = [];
+          for ( let j = 0; j < n; j++ ){
+            var gridCell = document.createElement('div');  
+            parentElement.appendChild(gridCell);
+            gridCell.classList.add('whiteCell');
+            gridArray[i][j] = gridCell;
+  
+            var darkCounter = 1;
+
+            gridArray[i][j].addEventListener('click', () => {
+              darkCounter = darkCounter-0.1;
+              if (darkCounter < 0) darkCounter = 0.9;
+                gridArray[i][j].classList.add('blackCell');
+                var clr = darkeningColor(darkCounter);
+                gridArray[i][j].style.backgroundColor = clr;
+            });
+          }
+    }
+})
+
+function darkeningColor(darkCounter) {
+  var red = Math.floor(darkCounter * 256);
+  var green = Math.floor(darkCounter * 256);
+  var blue = Math.floor(darkCounter * 256);
+
+  var color = "rgb(" + red + ", " + green + ", " + blue + ")";
+  return color;
+}
